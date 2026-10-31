@@ -1,0 +1,31 @@
+{
+  "order": 3,
+  "category": "app",
+  "tags": {
+    "es": [
+      "JavaScript / APIs",
+      "Directorio dinámico",
+      "Filtros avanzados"
+    ],
+    "en": [
+      "JavaScript / APIs",
+      "Dynamic directory",
+      "Advanced filters"
+    ]
+  },
+  "repo": "https://github.com/AlexisDaleiro/automationfindr",
+  "demo": "https://automationfindr.vercel.app",
+  "image": "/images/projects/automationfindr.webp",
+  "es": {
+    "title": "automationfindr",
+    "subtitle": "AI & Automation Tools Discovery",
+    "problem": "Hay cientos de herramientas de IA y automatización, y encontrar la adecuada para cada caso lleva horas.",
+    "solution": "Buscador inteligente y directorio de soluciones con sistema de categorización y filtrado en tiempo real."
+  },
+  "en": {
+    "title": "automationfindr",
+    "subtitle": "AI & Automation Tools Discovery",
+    "problem": "There are hundreds of AI and automation tools, and finding the right one for each case takes hours.",
+    "solution": "A smart search engine and solutions directory with categorization and real-time filtering."
+  }
+}

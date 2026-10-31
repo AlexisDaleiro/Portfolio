@@ -1,0 +1,82 @@
+---
+import Icon from './Icon.astro';
+import { getDict, wa, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const t = dict.hero;
+const cta = wa(dict.contact.waMessage);
+const badges = [
+  { icon: 'bolt', text: t.badges[0], pos: 'left-3 top-8 sm:-left-8', delay: '0s', tone: 'text-accent-emerald-ink' },
+  { icon: 'cart', text: t.badges[1], pos: 'right-3 top-[66%] sm:-right-8', delay: '-1.6s', tone: 'text-accent-amber-ink' },
+  { icon: 'shield', text: t.badges[2], pos: 'bottom-8 left-3 sm:-left-4', delay: '-3.2s', tone: 'text-accent-emerald-ink' },
+] as const;
+---
+
+<section id="inicio" class="relative isolate overflow-hidden pb-16 pt-28 sm:pb-24 sm:pt-36">
+  <div class="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+    <div class="lg:col-span-7">
+      <p
+        class="rise inline-flex items-center gap-2.5 rounded-full border border-subtle bg-surface px-3.5 py-1.5 font-mono text-xs text-muted"
+        style="--i:0"
+      >
+        <span class="pulse-dot" aria-hidden="true"></span>
+        {t.badge}
+      </p>
+      <h1
+        class="rise mt-6 text-balance font-display text-[clamp(2rem,1rem+3.4vw,3.75rem)] font-bold leading-[1.05] tracking-tight"
+        style="--i:1"
+      >
+        {t.titleMain}{' '}<span class="text-muted">{t.titleSoft}</span>
+      </h1>
+      <p class="rise mt-6 max-w-[62ch] text-pretty text-lg text-muted" style="--i:2">
+        {t.subtitle}
+      </p>
+      <div class="rise mt-9 flex flex-col gap-3 sm:flex-row" style="--i:3">
+        <a href={cta} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          {t.ctaPrimary}
+          <Icon name="arrow-up-right" size={18} />
+          <span class="sr-only">{dict.a11y.external}</span>
+        </a>
+        <a href="#proyectos" class="btn btn-ghost">
+          {t.ctaSecondary}
+          <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <div class="rise lg:col-span-5" style="--i:2">
+      <div class="photo-card relative mx-auto w-full max-w-sm lg:max-w-none">
+        <div class="photo-glow" aria-hidden="true"></div>
+        <div class="photo-frame overflow-hidden rounded-3xl border border-subtle bg-surface">
+          <img
+            src="/images/alexis-profile-512.webp"
+            srcset="/images/alexis-profile-320.webp 320w, /images/alexis-profile-512.webp 512w"
+            sizes="(min-width: 1024px) 420px, (min-width: 640px) 384px, 90vw"
+            width="512"
+            height="640"
+            alt={t.photoAlt}
+            fetchpriority="high"
+            decoding="async"
+            class="aspect-[4/5] w-full object-cover"
+          />
+        </div>
+        {
+          badges.map((b) => (
+            <span
+              class={`float-badge absolute ${b.pos} inline-flex items-center gap-2 rounded-xl px-3 py-2 font-mono text-xs font-medium text-primary sm:text-[0.8125rem]`}
+              style={`--d:${b.delay}`}
+            >
+              <Icon name={b.icon} size={16} class={b.tone} />
+              {b.text}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

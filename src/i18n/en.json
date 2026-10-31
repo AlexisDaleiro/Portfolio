@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Alexis Daleiro | Full-Stack Web Developer in Uruguay",
+    "description": "Full-Stack developer in Montevideo with marketing insight and a cybersecurity foundation. Landing pages, e-commerce and web apps that are fast, secure and built to turn visits into sales."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "home": "Alexis Daleiro, go to top",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "menu": "Open menu",
+    "language": "Language",
+    "themeToLight": "Switch to light mode",
+    "themeToDark": "Switch to dark mode",
+    "external": "(opens in a new tab)"
+  },
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Let's talk"
+  },
+  "hero": {
+    "badge": "Available for new freelance projects | Uruguay & LATAM",
+    "titleMain": "I build high-impact web apps that grow businesses,",
+    "titleSoft": "not just code that compiles.",
+    "subtitle": "I'm Alexis Daleiro, a Full-Stack developer with marketing insight and a cybersecurity foundation. Helping brands turn complex ideas into high-converting, lightning-fast digital products.",
+    "ctaPrimary": "Get a quote / Let's talk",
+    "ctaSecondary": "See my work",
+    "photoAlt": "Portrait of Alexis Daleiro, Full-Stack developer",
+    "badges": [
+      "100% Lighthouse Performance",
+      "Focus on Conversion & Sales",
+      "Clean & Secure Code"
+    ]
+  },
+  "value": {
+    "title": "Why work with me",
+    "items": [
+      {
+        "title": "Growth & Marketing Mindset",
+        "text": "Every interface is designed around retention, usability and conversion rate (CRO), shaped by my hands-on experience running eCommerce."
+      },
+      {
+        "title": "Fast Architecture & Cybersecurity",
+        "text": "Modern technologies (Astro, React, Python) and security best practices to protect your data and keep load times under 1 second."
+      },
+      {
+        "title": "Agile & Transparent Communication",
+        "text": "No needless jargon. A clear method, step-by-step deliveries and total focus on the client's business goals."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Selected work",
+    "intro": "Five real cases: the problem each client had and how I solved it.",
+    "filtersLabel": "Filter projects by type",
+    "filters": {
+      "all": "All",
+      "web": "Websites",
+      "ecommerce": "E-commerce",
+      "app": "Applications"
+    },
+    "shown": "projects shown",
+    "problem": "Problem",
+    "solution": "Solution",
+    "stack": "Technologies",
+    "repo": "GitHub",
+    "demo": "Demo",
+    "mockupAlt": "Project preview",
+    "ctaTitle": "Is your project next?",
+    "ctaText": "Tell me the problem you want to solve and we will build the solution together.",
+    "ctaButton": "Let's talk"
+  },
+  "services": {
+    "title": "Services for freelance clients",
+    "intro": "I work with small businesses, startups and brands that want to sell more with their website, not just have one.",
+    "cta": "Inquire",
+    "items": [
+      {
+        "title": "Websites & Landing Pages",
+        "text": "Corporate sites and sales landing pages designed to maximize conversions and load ultra fast.",
+        "message": "Hi Alexis, I saw your portfolio and I'd like to ask about a website or landing page."
+      },
+      {
+        "title": "Online Stores (E-commerce)",
+        "text": "Setup, maintenance and optimization of online stores built to sell without friction.",
+        "message": "Hi Alexis, I saw your portfolio and I'd like to ask about an online store."
+      },
+      {
+        "title": "Custom Web Applications",
+        "text": "Dashboards, internal panels and interactive tools connected to databases and APIs.",
+        "message": "Hi Alexis, I saw your portfolio and I'd like to ask about a custom web application."
+      },
+      {
+        "title": "Performance & Security Audit",
+        "text": "Diagnosis and fixes for slow or vulnerable websites.",
+        "message": "Hi Alexis, I saw your portfolio and I'd like to ask about a performance and security audit."
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "paragraphs": [
+      "I'm a Cybersecurity Technologist student at IAE and a Web Development Technological Baccalaureate graduate from ÁNIMA.",
+      "My experience goes beyond code: I worked in eCommerce and Marketing support at Tu Ración, analyzed Mercado Libre data at Arbusta and handled real-time monitoring at Sportradar. That's why I treat every website as a business tool."
+    ],
+    "timelineTitle": "Background",
+    "timeline": [
+      {
+        "org": "IAE",
+        "role": "Cybersecurity Technologist (student)",
+        "text": "Applied security: data protection and secure-by-design practices."
+      },
+      {
+        "org": "ÁNIMA",
+        "role": "Technological Baccalaureate in Web Development (graduate)",
+        "text": "Solid web development foundation: from semantic HTML to complete applications."
+      },
+      {
+        "org": "Tu Ración",
+        "role": "eCommerce & Marketing Support",
+        "text": "Hands-on experience in what makes an online store sell: catalog, customer care and messages that convert."
+      },
+      {
+        "org": "Arbusta",
+        "role": "Mercado Libre Data Analysis",
+        "text": "Analysis of large data volumes to decide with numbers, not intuition."
+      },
+      {
+        "org": "Sportradar",
+        "role": "Real-time Monitoring",
+        "text": "Attention to detail and calm under pressure where every second counts."
+      }
+    ],
+    "chess": {
+      "title": "FIDE-rated chess player",
+      "id": "FIDE ID",
+      "quote": "On the board and in code, every move follows a strategy planned ahead.",
+      "link": "View FIDE profile"
+    }
+  },
+  "stack": {
+    "title": "Tech stack & tools",
+    "intro": "Chosen for what they bring to the business, not for hype.",
+    "groups": [
+      {
+        "title": "Frontend",
+        "benefit": "Interfaces that load fast, look great on any screen and convert.",
+        "items": [
+          "Astro",
+          "React",
+          "JavaScript (ES6+)",
+          "Tailwind CSS",
+          "Semantic HTML5"
+        ]
+      },
+      {
+        "title": "Backend & Databases",
+        "benefit": "Data and APIs that keep your business running without surprises.",
+        "items": [
+          "Python",
+          "Node.js",
+          "SQL (PostgreSQL / MySQL)",
+          "REST APIs",
+          "JSON"
+        ]
+      },
+      {
+        "title": "Marketing, Data & Tools",
+        "benefit": "Measure, decide and improve with real numbers and tidy workflows.",
+        "items": [
+          "Looker",
+          "Power BI",
+          "Google Workspace",
+          "Postman",
+          "Git / GitHub",
+          "Functional testing",
+          "Agentic AI"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Tell me your idea and let's turn it into a project",
+    "text": "I reply fast and keep it simple. Pick the channel you prefer or leave your details and I'll write to you.",
+    "waMessage": "Hi Alexis, I saw your portfolio and I'd like to ask about a web project",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "idea": "Project idea",
+      "ideaPlaceholder": "Tell me what you want to achieve: type of site, timeline, references…",
+      "submit": "Send via WhatsApp",
+      "hint": "WhatsApp will open with your message ready to send.",
+      "greeting": "Hi Alexis, I'm {name} ({email}). I saw your portfolio and I'd like to ask about this project: {idea}"
+    },
+    "whatsapp": "Message on WhatsApp",
+    "emailLabel": "Email",
+    "copy": "Copy email",
+    "copied": "Copied!",
+    "copyFailed": "Could not copy",
+    "directTitle": "Direct contact",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "tagline": "Full-Stack web development from Montevideo, Uruguay.",
+    "rights": "All rights reserved.",
+    "top": "Back to top"
+  }
+}

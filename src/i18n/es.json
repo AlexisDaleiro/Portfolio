@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Alexis Daleiro | Desarrollador Web Full-Stack en Uruguay",
+    "description": "Desarrollador Full-Stack en Montevideo con visión de marketing y ciberseguridad. Landing pages, e-commerce y apps web rápidas, seguras y pensadas para convertir visitas en ventas."
+  },
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "home": "Alexis Daleiro, ir al inicio",
+    "mainNav": "Navegación principal",
+    "mobileNav": "Navegación móvil",
+    "menu": "Abrir menú",
+    "language": "Idioma",
+    "themeToLight": "Cambiar a modo claro",
+    "themeToDark": "Cambiar a modo oscuro",
+    "external": "(se abre en una pestaña nueva)"
+  },
+  "nav": {
+    "projects": "Proyectos",
+    "services": "Servicios",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "cta": "Hablemos"
+  },
+  "hero": {
+    "badge": "Disponible para nuevos proyectos freelance | Uruguay & LATAM",
+    "titleMain": "Desarrollo sitios y aplicaciones web que impulsan negocios,",
+    "titleSoft": "no solo código que compila.",
+    "subtitle": "Soy Alexis Daleiro, desarrollador Full-Stack con visión de marketing y ciberseguridad. Ayudo a marcas y empresas a transformar ideas complejas en experiencias web rápidas, atractivas y rentables.",
+    "ctaPrimary": "Cotizar proyecto / Hablemos",
+    "ctaSecondary": "Ver trabajos",
+    "photoAlt": "Retrato de Alexis Daleiro, desarrollador Full-Stack",
+    "badges": [
+      "100% Lighthouse Performance",
+      "Enfoque en Conversión y Ventas",
+      "Código Limpio & Seguro"
+    ]
+  },
+  "value": {
+    "title": "Por qué trabajar conmigo",
+    "items": [
+      {
+        "title": "Mentalidad de Crecimiento & Marketing",
+        "text": "Cada interfaz se diseña pensando en la retención, la usabilidad y la tasa de conversión (CRO), fruto de mi experiencia directa gestionando eCommerce."
+      },
+      {
+        "title": "Arquitectura Rápida & Ciberseguridad",
+        "text": "Tecnologías modernas (Astro, React, Python) y mejores prácticas de seguridad informática para proteger tus datos y asegurar tiempos de carga menores a 1 segundo."
+      },
+      {
+        "title": "Comunicación Ágil & Transparente",
+        "text": "Sin tecnicismos innecesarios. Metodología clara, entregas paso a paso y foco absoluto en los objetivos comerciales del cliente."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Proyectos destacados",
+    "intro": "Cinco casos reales: qué problema tenía cada cliente y cómo lo resolví.",
+    "filtersLabel": "Filtrar proyectos por tipo",
+    "filters": {
+      "all": "Todos",
+      "web": "Sitios web",
+      "ecommerce": "E-commerce",
+      "app": "Aplicaciones"
+    },
+    "shown": "proyectos mostrados",
+    "problem": "Problema",
+    "solution": "Solución",
+    "stack": "Tecnologías",
+    "repo": "GitHub",
+    "demo": "Demo",
+    "mockupAlt": "Vista previa del proyecto",
+    "ctaTitle": "¿Tu proyecto es el próximo?",
+    "ctaText": "Contame el problema que querés resolver y armamos juntos la solución.",
+    "ctaButton": "Hablemos"
+  },
+  "services": {
+    "title": "Servicios para clientes freelance",
+    "intro": "Trabajo con pymes, startups y marcas que quieren vender más con su web, no solo tener una.",
+    "cta": "Consultar",
+    "items": [
+      {
+        "title": "Desarrollo de Sitios Web & Landing Pages",
+        "text": "Páginas institucionales y landings de venta diseñadas para maximizar conversiones y cargar a velocidad ultra rápida.",
+        "message": "Hola Alexis, vi tu portfolio y me gustaría consultar por un sitio web o landing page."
+      },
+      {
+        "title": "Tiendas Online (E-commerce)",
+        "text": "Configuración, mantenimiento y optimización de tiendas digitales orientadas a vender sin fricción.",
+        "message": "Hola Alexis, vi tu portfolio y me gustaría consultar por una tienda online."
+      },
+      {
+        "title": "Aplicaciones Web a Medida",
+        "text": "Dashboards, paneles internos y herramientas interactivas conectadas a bases de datos y APIs.",
+        "message": "Hola Alexis, vi tu portfolio y me gustaría consultar por una aplicación web a medida."
+      },
+      {
+        "title": "Auditoría de Rendimiento & Seguridad",
+        "text": "Diagnóstico y corrección de webs lentas o vulnerables.",
+        "message": "Hola Alexis, vi tu portfolio y me gustaría consultar por una auditoría de rendimiento y seguridad."
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Soy estudiante de Tecnólogo en Ciberseguridad en IAE y egresado de Bachillerato Tecnológico en Desarrollo Web en ÁNIMA.",
+      "Mi experiencia no es solo código: trabajé en soporte de eCommerce y Marketing en Tu Ración, analicé datos de Mercado Libre en Arbusta y monitoreé información en tiempo real en Sportradar. Por eso pienso cada web como una herramienta de negocio."
+    ],
+    "timelineTitle": "Trayectoria",
+    "timeline": [
+      {
+        "org": "IAE",
+        "role": "Tecnólogo en Ciberseguridad (estudiante)",
+        "text": "Seguridad aplicada: protección de datos y buenas prácticas desde el diseño."
+      },
+      {
+        "org": "ÁNIMA",
+        "role": "Bachillerato Tecnológico en Desarrollo Web (egresado)",
+        "text": "Base sólida en desarrollo web: de HTML semántico a aplicaciones completas."
+      },
+      {
+        "org": "Tu Ración",
+        "role": "Soporte de eCommerce & Marketing",
+        "text": "Experiencia directa en lo que hace que una tienda online venda: catálogo, atención y mensajes que convierten."
+      },
+      {
+        "org": "Arbusta",
+        "role": "Análisis de datos de Mercado Libre",
+        "text": "Análisis de grandes volúmenes de datos para decidir con números y no con intuición."
+      },
+      {
+        "org": "Sportradar",
+        "role": "Monitoreo en tiempo real",
+        "text": "Atención al detalle y calma bajo presión en entornos donde cada segundo cuenta."
+      }
+    ],
+    "chess": {
+      "title": "Ajedrez federado FIDE",
+      "id": "ID FIDE",
+      "quote": "En el tablero y en el código, cada movimiento responde a una estrategia pensada con anticipación.",
+      "link": "Ver perfil FIDE"
+    }
+  },
+  "stack": {
+    "title": "Tech stack & herramientas",
+    "intro": "Elegidas por lo que aportan al negocio, no por moda.",
+    "groups": [
+      {
+        "title": "Frontend",
+        "benefit": "Interfaces que cargan rápido, se ven bien en cualquier pantalla y convierten.",
+        "items": [
+          "Astro",
+          "React",
+          "JavaScript (ES6+)",
+          "Tailwind CSS",
+          "HTML5 semántico"
+        ]
+      },
+      {
+        "title": "Backend & Bases de Datos",
+        "benefit": "Datos y APIs que sostienen tu negocio sin sorpresas.",
+        "items": [
+          "Python",
+          "Node.js",
+          "SQL (PostgreSQL / MySQL)",
+          "REST APIs",
+          "JSON"
+        ]
+      },
+      {
+        "title": "Marketing, Datos & Herramientas",
+        "benefit": "Medir, decidir y mejorar con números reales y flujos de trabajo ordenados.",
+        "items": [
+          "Looker",
+          "Power BI",
+          "Google Workspace",
+          "Postman",
+          "Git / GitHub",
+          "Testing funcional",
+          "IA Agéntica"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contame tu idea y la convertimos en un proyecto",
+    "text": "Respondo rápido y sin vueltas. Elegí el canal que prefieras o dejame los datos y te escribo yo.",
+    "waMessage": "Hola Alexis, vi tu portfolio y me gustaría consultar por un proyecto web",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "idea": "Idea del proyecto",
+      "ideaPlaceholder": "Contame qué querés lograr: tipo de web, plazos, referencias…",
+      "submit": "Enviar por WhatsApp",
+      "hint": "Se abrirá WhatsApp con tu mensaje listo para enviar.",
+      "greeting": "Hola Alexis, soy {name} ({email}). Vi tu portfolio y me gustaría consultar por este proyecto: {idea}"
+    },
+    "whatsapp": "Escribir por WhatsApp",
+    "emailLabel": "Email",
+    "copy": "Copiar email",
+    "copied": "¡Copiado!",
+    "copyFailed": "No se pudo copiar",
+    "directTitle": "Contacto directo",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "tagline": "Desarrollo web Full-Stack desde Montevideo, Uruguay.",
+    "rights": "Todos los derechos reservados.",
+    "top": "Volver arriba"
+  }
+}

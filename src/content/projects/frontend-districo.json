@@ -1,0 +1,31 @@
+{
+  "order": 4,
+  "category": "ecommerce",
+  "tags": {
+    "es": [
+      "React",
+      "Arquitectura",
+      "Catálogo comercial"
+    ],
+    "en": [
+      "React",
+      "Architecture",
+      "Commercial catalog"
+    ]
+  },
+  "repo": "https://github.com/AlexisDaleiro/Frontend-Districo",
+  "demo": "https://frontend-districo.vercel.app",
+  "image": "/images/projects/frontend-districo.webp",
+  "es": {
+    "title": "Frontend-Districo",
+    "subtitle": "B2B Distribution Portal",
+    "problem": "Retailers y distribuidores navegan catálogos enormes y arman órdenes comerciales con demasiada fricción.",
+    "solution": "Frontend para empresas de retail y distribución que prioriza la navegación masiva de catálogos y órdenes comerciales."
+  },
+  "en": {
+    "title": "Frontend-Districo",
+    "subtitle": "B2B Distribution Portal",
+    "problem": "Retailers and distributors browse huge catalogs and build commercial orders with too much friction.",
+    "solution": "A frontend for retail and distribution companies that prioritizes mass catalog browsing and commercial orders."
+  }
+}

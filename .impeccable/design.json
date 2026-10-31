@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T19:45:00.000Z",
+  "title": "Design System: Alexis Daleiro Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal-emerald": { "role": "primary", "displayName": "Señal Esmeralda", "canonical": "#10E599", "tonalRamp": ["#022C1E", "#04523A", "#047857", "#07A874", "#10E599", "#5CF0B8", "#A7F7D8", "#E3FDF3"] },
+      "highlight-amber": { "role": "secondary", "displayName": "Ámbar de Realce", "canonical": "#F59E0B", "tonalRamp": ["#3B2403", "#78470A", "#B45309", "#D97706", "#F59E0B", "#FBBF24", "#FCD98B", "#FEF3D6"] },
+      "canvas-night": { "role": "neutral", "displayName": "Lienzo Noche", "canonical": "#0A0C10", "tonalRamp": ["#0A0C10", "#131720", "#1C2230", "#212836", "#475569", "#94A3B8", "#E2E8F0", "#F1F5F9"] },
+      "canvas-day": { "role": "neutral", "displayName": "Lienzo Día", "canonical": "#F8FAFC", "tonalRamp": ["#0F172A", "#334155", "#64748B", "#94A3B8", "#CBD5E1", "#E2E8F0", "#F1F5F9", "#F8FAFC"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 del hero." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de sección." },
+      "label": { "displayName": "Label", "purpose": "Datos, chips y etiquetas en mono." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 20px 40px -20px color-mix(in oklab, #10E599 50%, transparent)", "purpose": "Hover de tarjeta de proyecto." },
+      { "name": "float-chip", "value": "0 10px 24px -12px rgb(0 0 0 / 0.35)", "purpose": "Badges flotantes sobre la foto." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entradas, reveal por scroll y hover de tarjetas." },
+      { "name": "reveal", "value": "opacity .7s + translate 18px", "purpose": "Aparición de secciones al hacer scroll." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal: WhatsApp, enviar formulario.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Hablemos</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:12px;background:#10E599;color:#0A0C10;font-weight:600;font-size:15px;text-decoration:none;transition:filter .2s,transform .25s}.ds-btn-primary:hover{filter:brightness(1.08)}.ds-btn-primary:focus-visible{outline:2px solid #10E599;outline-offset:3px}.ds-btn-primary:active{transform:scale(.98)}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Etiqueta de tecnología en mono.",
+      "html": "<span class=\"ds-chip\">Astro / React</span>",
+      "css": ".ds-chip{display:inline-block;border:1px solid #212836;border-radius:999px;background:#0A0C10;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:#94A3B8}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Caso de estudio con Problema → Solución.",
+      "html": "<article class=\"ds-card\"><h3>CFMoto-2</h3><p>Showroom &amp; Automotive Web Experience</p></article>",
+      "css": ".ds-card{border:1px solid #212836;border-radius:16px;background:#131720;color:#F1F5F9;padding:28px;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .35s}.ds-card:hover{transform:translateY(-4px);border-color:#10E599;box-shadow:0 20px 40px -20px rgba(16,229,153,.5)}.ds-card h3{margin:0;font-size:22px;font-weight:600}.ds-card p{margin:4px 0 0;color:#94A3B8;font-size:14px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Annotated Spec Sheet",
+    "overview": "Una ficha técnica bien editada: columnas con reglas finas, titulares de revista y detalles mono como anotaciones al margen. Dark-first con gemelo claro y una única señal esmeralda.",
+    "keyCharacteristics": [
+      "Titulares en Space Grotesk, cuerpo en Plus Jakarta Sans, datos en JetBrains Mono.",
+      "Bordes de 1px como único recurso estructural; sin sombras en reposo.",
+      "Esmeralda como señal única; ámbar como acento secundario.",
+      "Movimiento corto y con propósito."
+    ],
+    "rules": [
+      { "name": "The Ink Variant Rule", "body": "En modo claro el texto usa las variantes de tinta del esmeralda y el ámbar; los tonos puros solo como relleno.", "section": "colors" },
+      { "name": "The One Signal Rule", "body": "El esmeralda aparece solo donde hay acción o estado vivo.", "section": "colors" },
+      { "name": "The Mono Is Data Rule", "body": "La monoespaciada es para datos y etiquetas, nunca para párrafos.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Ninguna superficie lleva sombra en reposo.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar solo los tokens (bg-canvas, text-muted, border-subtle) y cambiar de modo con la clase dark.",
+      "Do mantener ≥44px de alto en controles táctiles y foco visible en todo.",
+      "Do respetar prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't usar degradados púrpuras, texto con degradado ni barras de porcentaje de habilidades.",
+      "Don't usar esmeralda o ámbar puros como color de texto sobre fondo claro.",
+      "Don't añadir fondos de grilla decorativos, sombras en reposo ni tarjetas anidadas."
+    ]
+  }
+}

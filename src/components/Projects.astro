@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import { getDict, wa, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const t = dict.projects;
+const entries = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const filters = ['all', 'web', 'ecommerce', 'app'] as const;
+---
+
+<section id="proyectos" aria-labelledby="proyectos-title" class="border-t border-subtle py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="reveal max-w-2xl">
+        <h2 id="proyectos-title" class="text-balance font-display text-3xl font-bold tracking-tight sm:text-5xl">
+          {t.title}
+        </h2>
+        <p class="mt-4 text-lg text-muted">{t.intro}</p>
+      </div>
+      <div role="group" aria-label={t.filtersLabel} class="reveal flex flex-wrap gap-2" id="project-filters">
+        {
+          filters.map((f) => (
+            <button type="button" class="filter-btn" data-filter={f} aria-pressed={f === 'all' ? 'true' : 'false'}>
+              {t.filters[f]}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8" id="project-grid">
+      {entries.map((entry, i) => <ProjectCard entry={entry} lang={lang} index={i} />)}
+      <div
+        class="project-cta reveal flex flex-col justify-center gap-4 rounded-2xl border border-dashed border-subtle bg-surface p-7 sm:p-9"
+        style="--d:90ms"
+      >
+        <h3 class="text-balance font-display text-2xl font-semibold leading-snug sm:text-3xl">{t.ctaTitle}</h3>
+        <p class="max-w-[46ch] text-muted">{t.ctaText}</p>
+        <a href={wa(dict.contact.waMessage)} target="_blank" rel="noopener noreferrer" class="btn btn-primary self-start">
+          {t.ctaButton}
+          <span class="sr-only">{dict.a11y.external}</span>
+        </a>
+      </div>
+    </div>
+    <p class="sr-only" role="status" id="project-status" data-suffix={t.shown}></p>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('.project-card');
+  const cta = document.querySelector<HTMLElement>('.project-cta');
+  const status = document.getElementById('project-status');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      let shown = 0;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      cta?.toggleAttribute('hidden', filter !== 'all');
+      if (status) status.textContent = `${shown} ${status.dataset.suffix ?? ''}`;
+    });
+  });
+</script>

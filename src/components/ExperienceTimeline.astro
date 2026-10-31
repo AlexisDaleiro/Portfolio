@@ -1,0 +1,29 @@
+---
+import { getDict, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang).about;
+---
+
+<div>
+  <h3 class="font-display text-xl font-semibold">{t.timelineTitle}</h3>
+  <ol class="relative mt-6 ml-2 space-y-8 border-l border-subtle pl-8">
+    {
+      t.timeline.map((item, i) => (
+        <li class="reveal relative" style={`--d:${i * 60}ms`}>
+          <span
+            class="absolute -left-[2.45rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent-emerald bg-canvas"
+            aria-hidden="true"
+          />
+          <p class="font-display text-lg font-semibold leading-snug">{item.org}</p>
+          <p class="font-mono text-xs font-medium text-accent-emerald-ink">{item.role}</p>
+          <p class="mt-2 max-w-[60ch] text-muted">{item.text}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>

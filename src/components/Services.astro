@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import { getDict, wa, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const t = dict.services;
+---
+
+<section id="servicios" aria-labelledby="servicios-title" class="border-t border-subtle py-20 sm:py-28">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+    <div class="reveal lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+      <h2 id="servicios-title" class="text-balance font-display text-3xl font-bold tracking-tight sm:text-5xl">
+        {t.title}
+      </h2>
+      <p class="mt-4 text-lg text-muted">{t.intro}</p>
+    </div>
+    <ul class="divide-y divide-subtle border-y border-subtle lg:col-span-8">
+      {
+        t.items.map((item, i) => (
+          <li
+            class="reveal grid gap-4 py-8 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8"
+            style={`--d:${i * 70}ms`}
+          >
+            <div>
+              <h3 class="font-display text-xl font-semibold leading-snug sm:text-2xl">{item.title}</h3>
+              <p class="mt-2 max-w-[56ch] text-muted">{item.text}</p>
+            </div>
+            <a
+              href={wa(item.message)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-accent-emerald-ink hover:underline"
+            >
+              {t.cta}
+              <Icon name="arrow-up-right" size={18} />
+              <span class="sr-only">
+                : {item.title} {dict.a11y.external}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,110 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+import spaceUrl from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
+import jakartaUrl from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
+import { getDict, homePath, CONTACT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang);
+const site = Astro.site!;
+const canonical = new URL(homePath(lang), site).href;
+const ogImage = new URL('/og-image.png', site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Alexis Daleiro',
+  url: canonical,
+  jobTitle: lang === 'es' ? 'Desarrollador Web Full-Stack' : 'Full-Stack Web Developer',
+  email: `mailto:${CONTACT.email}`,
+  address: { '@type': 'PostalAddress', addressLocality: 'Montevideo', addressCountry: 'UY' },
+  sameAs: [CONTACT.linkedin, CONTACT.github],
+};
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={new URL('/', site).href} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', site).href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0A0C10" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alexis Daleiro" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_UY' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preload" as="font" type="font/woff2" href={spaceUrl} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={jakartaUrl} crossorigin />
+
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var dark = stored ? stored === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+          var root = document.documentElement;
+          root.classList.toggle('dark', dark);
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          if (location.pathname === '/' && localStorage.getItem('lang') === 'en') {
+            location.replace('/en/' + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only z-[60] rounded-lg bg-accent-emerald px-4 py-2 font-semibold text-[#0A0C10] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+    >
+      {t.a11y.skip}
+    </a>
+    <slot />
+  </body>
+</html>
+
+<script>
+  const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+</script>

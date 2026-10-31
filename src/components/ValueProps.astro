@@ -1,0 +1,31 @@
+---
+import { getDict, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang).value;
+---
+
+<section id="valor" aria-labelledby="valor-title" class="border-t border-subtle py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2
+      id="valor-title"
+      class="reveal max-w-3xl text-balance font-display text-3xl font-bold tracking-tight sm:text-5xl"
+    >
+      {t.title}
+    </h2>
+    <ul class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-subtle bg-subtle md:grid-cols-3">
+      {
+        t.items.map((item, i) => (
+          <li class="reveal bg-surface p-7 transition-colors hover:bg-surface-hover sm:p-9" style={`--d:${i * 90}ms`}>
+            <h3 class="font-display text-xl font-semibold leading-snug">{item.title}</h3>
+            <p class="mt-4 text-muted">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+import { getDict, type Lang } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  lang: Lang;
+  index: number;
+}
+
+const { entry, lang, index } = Astro.props;
+const t = getDict(lang);
+const d = entry.data;
+const c = d[lang];
+---
+
+<article
+  data-category={d.category}
+  class="project-card card-hover reveal group flex flex-col overflow-hidden rounded-2xl border border-subtle bg-surface"
+  style={`--d:${(index % 2) * 90}ms`}
+>
+  <div class="overflow-hidden border-b border-subtle bg-canvas">
+    <img
+      src={d.image}
+      width="1000"
+      height="625"
+      alt={`${c.title}. ${t.projects.mockupAlt}.`}
+      loading="lazy"
+      decoding="async"
+      class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-6 sm:p-7">
+    <h3 class="font-display text-xl font-semibold leading-snug sm:text-2xl">{c.title}</h3>
+    <p class="mt-1 text-sm text-muted">{c.subtitle}</p>
+    <ul class="mt-4 flex flex-wrap gap-2" aria-label={t.projects.stack}>
+      {d.tags[lang].map((tag) => <li class="chip">{tag}</li>)}
+    </ul>
+    <dl class="mt-6 space-y-4 text-[0.9375rem]">
+      <div>
+        <dt class="font-mono text-xs font-medium uppercase tracking-wide text-accent-amber-ink">
+          {t.projects.problem}
+        </dt>
+        <dd class="mt-1 text-muted">{c.problem}</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-xs font-medium uppercase tracking-wide text-accent-emerald-ink">
+          {t.projects.solution}
+        </dt>
+        <dd class="mt-1">{c.solution}</dd>
+      </div>
+    </dl>
+    <div class="mt-auto flex flex-wrap gap-3 pt-7">
+      {
+        d.demo && (
+          <a href={d.demo} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            {t.projects.demo}
+            <Icon name="arrow-up-right" size={18} />
+            <span class="sr-only">
+              {c.title} {t.a11y.external}
+            </span>
+          </a>
+        )
+      }
+      <a
+        href={d.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`btn ${d.demo ? 'btn-ghost' : 'btn-primary'}`}
+      >
+        <Icon name="github" size={18} />
+        {t.projects.repo}
+        <span class="sr-only">
+          {c.title} {t.a11y.external}
+        </span>
+      </a>
+    </div>
+  </div>
+</article>

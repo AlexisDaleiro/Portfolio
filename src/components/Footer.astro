@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import { getDict, homePath, CONTACT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const t = dict.footer;
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-subtle py-12">
+  <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+    <div>
+      <a href={homePath(lang)} class="logo font-display text-lg font-bold tracking-tight" aria-label={dict.a11y.home}>
+        Alexis Daleiro<span class="logo-dot" aria-hidden="true">.</span>
+      </a>
+      <p class="mt-2 max-w-sm text-sm text-muted">{t.tagline}</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <a
+        href={CONTACT.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="icon-btn"
+        aria-label={`GitHub ${dict.a11y.external}`}
+      >
+        <Icon name="github" />
+      </a>
+      <a
+        href={CONTACT.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="icon-btn"
+        aria-label={`LinkedIn ${dict.a11y.external}`}
+      >
+        <Icon name="linkedin" />
+      </a>
+      <a href={`mailto:${CONTACT.email}`} class="icon-btn" aria-label={`Email ${CONTACT.email}`}>
+        <Icon name="mail" />
+      </a>
+      <a href="#inicio" class="icon-btn" aria-label={t.top}>
+        <Icon name="arrow-up" />
+      </a>
+    </div>
+  </div>
+  <p class="mx-auto mt-8 max-w-7xl px-4 font-mono text-xs text-muted sm:px-6 lg:px-8">
+    &copy; {year} Alexis Daleiro. {t.rights}
+  </p>
+</footer>

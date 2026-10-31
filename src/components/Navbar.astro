@@ -1,0 +1,95 @@
+---
+import ThemeToggle from './ThemeToggle.tsx';
+import LanguageToggle from './LanguageToggle.tsx';
+import Icon from './Icon.astro';
+import { getDict, homePath, wa, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang);
+const home = homePath(lang);
+const hablemos = wa(t.contact.waMessage);
+const links = [
+  { href: '#proyectos', label: t.nav.projects },
+  { href: '#servicios', label: t.nav.services },
+  { href: '#sobre-mi', label: t.nav.about },
+  { href: '#contacto', label: t.nav.contact },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-subtle bg-canvas/85 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+    <a
+      href={home}
+      class="logo font-display text-lg font-bold tracking-tight sm:text-xl"
+      aria-label={t.a11y.home}
+    >
+      Alexis Daleiro<span class="logo-dot" aria-hidden="true">.</span>
+    </a>
+
+    <nav aria-label={t.a11y.mainNav} class="hidden items-center gap-8 md:flex">
+      {
+        links.map((l) => (
+          <a href={l.href} class="text-sm font-medium text-muted transition-colors hover:text-primary">
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <LanguageToggle client:load lang={lang} label={t.a11y.language} />
+      <ThemeToggle client:load toLight={t.a11y.themeToLight} toDark={t.a11y.themeToDark} />
+      <a
+        href={hablemos}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary hidden md:inline-flex"
+      >
+        {t.nav.cta}
+        <span class="sr-only">{t.a11y.external}</span>
+      </a>
+      <button
+        type="button"
+        class="icon-btn md:hidden"
+        popovertarget="mobile-menu"
+        aria-label={t.a11y.menu}
+        aria-controls="mobile-menu"
+      >
+        <Icon name="menu" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" popover="auto" class="mobile-menu">
+    <nav aria-label={t.a11y.mobileNav} class="flex flex-col gap-1">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="rounded-xl px-3 py-3 text-base font-medium hover:bg-surface-hover"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <a
+        href={hablemos}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary mt-2"
+      >
+        {t.nav.cta}
+        <span class="sr-only">{t.a11y.external}</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menu = document.getElementById('mobile-menu');
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.hidePopover()));
+</script>

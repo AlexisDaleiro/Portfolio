@@ -1,0 +1,170 @@
+---
+import Icon from './Icon.astro';
+import { getDict, wa, CONTACT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const t = dict.contact;
+---
+
+<section id="contacto" aria-labelledby="contacto-title" class="border-t border-subtle py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="reveal max-w-3xl">
+      <h2 id="contacto-title" class="text-balance font-display text-3xl font-bold tracking-tight sm:text-5xl">
+        {t.title}
+      </h2>
+      <p class="mt-4 text-lg text-muted">{t.text}</p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-12">
+      <form
+        id="contact-form"
+        class="reveal min-w-0 space-y-5 rounded-2xl border border-subtle bg-surface p-6 sm:p-8 lg:col-span-7"
+        data-wa={`https://wa.me/${CONTACT.waNumber}`}
+        data-template={t.form.greeting}
+      >
+        <div>
+          <label for="c-name" class="mb-2 block text-sm font-medium">{t.form.name}</label>
+          <input
+            id="c-name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            maxlength="80"
+            placeholder={t.form.namePlaceholder}
+            class="field"
+          />
+        </div>
+        <div>
+          <label for="c-email" class="mb-2 block text-sm font-medium">{t.form.email}</label>
+          <input
+            id="c-email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            maxlength="120"
+            placeholder={t.form.emailPlaceholder}
+            class="field"
+          />
+        </div>
+        <div>
+          <label for="c-idea" class="mb-2 block text-sm font-medium">{t.form.idea}</label>
+          <textarea
+            id="c-idea"
+            name="idea"
+            required
+            rows="5"
+            maxlength="1000"
+            placeholder={t.form.ideaPlaceholder}
+            class="field resize-y"></textarea>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button type="submit" class="btn btn-primary">
+            <Icon name="whatsapp" size={18} />
+            {t.form.submit}
+          </button>
+          <p class="text-sm text-muted">{t.form.hint}</p>
+        </div>
+      </form>
+
+      <div class="reveal min-w-0 space-y-4 lg:col-span-5" style="--d:90ms">
+        <h3 class="font-display text-lg font-semibold">{t.directTitle}</h3>
+        <a
+          href={wa(t.waMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary w-full flex-wrap justify-between gap-x-4 gap-y-1 !py-3"
+        >
+          <span class="inline-flex items-center gap-2">
+            <Icon name="whatsapp" size={18} />
+            {t.whatsapp}
+          </span>
+          <span class="font-mono text-xs font-medium">{CONTACT.phoneDisplay}</span>
+          <span class="sr-only">{dict.a11y.external}</span>
+        </a>
+
+        <div class="relative flex items-center justify-between gap-3 rounded-xl border border-subtle bg-surface py-2.5 pl-4 pr-2.5">
+          <span class="flex min-w-0 items-center gap-2.5">
+            <Icon name="mail" size={18} class="shrink-0 text-muted" />
+            <span class="truncate font-mono text-sm" id="email-text">{CONTACT.email}</span>
+          </span>
+          <button
+            type="button"
+            class="btn btn-ghost !min-h-10 shrink-0 !px-3"
+            data-copy={CONTACT.email}
+            data-copied={t.copied}
+            data-failed={t.copyFailed}
+            aria-label={t.copy}
+          >
+            <Icon name="copy" size={16} />
+            <span class="hidden sm:inline">{t.copy}</span>
+          </button>
+          <span class="copy-tip" role="status" data-tip></span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <a
+            href={CONTACT.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost"
+          >
+            <Icon name="linkedin" size={18} />
+            {t.linkedin}
+            <span class="sr-only">{dict.a11y.external}</span>
+          </a>
+          <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <Icon name="github" size={18} />
+            {t.github}
+            <span class="sr-only">{dict.a11y.external}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const text = (form.dataset.template ?? '')
+      .replace('{name}', String(data.get('name')).trim())
+      .replace('{email}', String(data.get('email')).trim())
+      .replace('{idea}', String(data.get('idea')).trim());
+    window.open(`${form.dataset.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  });
+
+  const copyBtn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const tip = document.querySelector<HTMLElement>('[data-tip]');
+  let timer: number | undefined;
+
+  const flash = (message: string) => {
+    if (!tip) return;
+    tip.textContent = message;
+    tip.classList.add('show');
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      tip.classList.remove('show');
+      tip.textContent = '';
+    }, 1800);
+  };
+
+  copyBtn?.addEventListener('click', async () => {
+    const value = copyBtn.dataset.copy ?? '';
+    try {
+      await navigator.clipboard.writeText(value);
+      flash(copyBtn.dataset.copied ?? '');
+    } catch {
+      flash(copyBtn.dataset.failed ?? '');
+    }
+  });
+</script>

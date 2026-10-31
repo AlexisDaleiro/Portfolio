@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+.unlighthouse
+.env
+.playwright-mcp
+.lh
+.preview.log
+shot-*.png

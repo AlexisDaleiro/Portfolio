@@ -1,0 +1,31 @@
+{
+  "order": 2,
+  "category": "web",
+  "tags": {
+    "es": [
+      "Full-Stack",
+      "Web App",
+      "UI/UX accesible"
+    ],
+    "en": [
+      "Full-Stack",
+      "Web App",
+      "Accessible UI/UX"
+    ]
+  },
+  "repo": "https://github.com/AlexisDaleiro/Manlab",
+  "demo": "https://manlab-in-redise-o.vercel.app",
+  "image": "/images/projects/manlab.webp",
+  "es": {
+    "title": "Manlab",
+    "subtitle": "Doctor-Prescribed Hair Regrowth Platform",
+    "problem": "En salud personal se compra por confianza: la gente duda de tratamientos que no entiende y de sitios que parecen una tienda cualquiera.",
+    "solution": "Sitio moderno y accesible que explica la ciencia detrás del tratamiento, guía una evaluación gratuita personalizada y transmite rigor médico."
+  },
+  "en": {
+    "title": "Manlab",
+    "subtitle": "Doctor-Prescribed Hair Regrowth Platform",
+    "problem": "In personal health people buy on trust: they hesitate over treatments they do not understand and sites that look like any other store.",
+    "solution": "A modern, accessible site that explains the science behind the treatment, guides a personalized free assessment and conveys medical rigor."
+  }
+}

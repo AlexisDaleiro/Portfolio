@@ -1,0 +1,31 @@
+{
+  "order": 1,
+  "category": "web",
+  "tags": {
+    "es": [
+      "Astro / React",
+      "Tailwind CSS",
+      "Responsive Design"
+    ],
+    "en": [
+      "Astro / React",
+      "Tailwind CSS",
+      "Responsive Design"
+    ]
+  },
+  "repo": "https://github.com/AlexisDaleiro/CFMoto-2",
+  "demo": "https://cfmoto-2.vercel.app",
+  "image": "/images/projects/cfmoto-2.webp",
+  "es": {
+    "title": "CFMoto-2",
+    "subtitle": "Showroom & Automotive Web Experience",
+    "problem": "Un catálogo vehicular de alta gama con imágenes muy pesadas: si la web carga lento, el interesado se va antes de contactar.",
+    "solution": "Plataforma web interactiva con optimización extrema de imágenes y un diseño enfocado en generar leads calificados para concesionarios."
+  },
+  "en": {
+    "title": "CFMoto-2",
+    "subtitle": "Showroom & Automotive Web Experience",
+    "problem": "A high-end vehicle catalog full of heavy images: if the site loads slowly, the prospect leaves before getting in touch.",
+    "solution": "An interactive web platform with extreme image optimization and a design focused on generating qualified leads for dealerships."
+  }
+}

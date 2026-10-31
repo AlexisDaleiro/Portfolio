@@ -59,12 +59,14 @@ const mocks = {
     ${[0, 1, 2, 3, 4].map((i) => `<rect x="${160 + i * 92}" y="196" width="80" height="30" rx="15" fill="${i === 0 ? a : C.hover}"/>`).join('')}
     ${[0, 1, 2, 3, 4, 5].map((i) => card(70 + (i % 3) * 300, 255 + Math.floor(i / 3) * 165, 280, 145, i % 2 ? null : a)).join('')}
     ${[0, 1, 2, 3, 4, 5].map((i) => bar(90 + (i % 3) * 300, 275 + Math.floor(i / 3) * 165, 120, 14, C.text) + bar(90 + (i % 3) * 300, 305 + Math.floor(i / 3) * 165, 200, 10, C.muted)).join('')}`),
-  'frontend-districo': (a = C.am) => win(a, `
-    <rect x="60" y="105" width="190" height="470" fill="${C.bg}" opacity="0.5"/>
-    ${[0, 1, 2, 3, 4, 5].map((i) => `<rect x="80" y="${130 + i * 40}" width="16" height="16" rx="4" fill="${i < 2 ? a : C.line}"/>${bar(108, 133 + i * 40, 110, 10, C.muted)}`).join('')}
-    ${[0, 1, 2, 3, 4, 5].map((i) => `<rect x="275" y="${120 + i * 70}" width="430" height="58" rx="10" fill="${C.hover}"/><rect x="288" y="${130 + i * 70}" width="38" height="38" rx="8" fill="${C.line}"/>${bar(340, 138 + i * 70, 150, 12, C.text)}${bar(340, 160 + i * 70, 100, 9, C.muted)}<rect x="590" y="${136 + i * 70}" width="96" height="26" rx="8" fill="${C.bg}"/>`).join('')}
-    <rect x="730" y="120" width="205" height="300" rx="14" fill="${C.hover}" stroke="${a}" stroke-width="2"/>${bar(750, 145, 100, 14, C.text)}${bar(750, 185, 165, 10)}${bar(750, 210, 150, 10)}${bar(750, 235, 160, 10)}
-    <rect x="750" y="350" width="165" height="44" rx="12" fill="${a}"/>`),
+  basketflick2d: (a = C.am) => win(a, `
+    ${bar(70, 112, 150, 26, C.hover, 13)}${bar(790, 112, 140, 26, C.hover, 13)}${bar(84, 121, 70, 8, a)}
+    <rect x="380" y="140" width="240" height="150" rx="10" fill="${C.hover}" stroke="${C.line}" stroke-width="3"/><rect x="450" y="190" width="100" height="70" rx="6" fill="none" stroke="${a}" stroke-width="6"/>
+    <ellipse cx="500" cy="300" rx="60" ry="12" fill="none" stroke="${a}" stroke-width="8"/>
+    <path d="M440 306 470 380M560 306 530 380M500 312V384" stroke="${C.muted}" stroke-width="3" fill="none"/>
+    <path d="M500 540C500 470 480 400 500 330" stroke="${C.muted}" stroke-width="3" stroke-dasharray="8 10" fill="none"/>
+    <circle cx="500" cy="520" r="44" fill="${a}"/><path d="M456 520H544M500 476V564M470 488C490 508 490 532 470 552M530 488C510 508 510 532 530 552" stroke="${C.bg}" stroke-width="4" fill="none"/>
+    ${bar(430, 430, 140, 14, C.text)}`),
   garrafifa: (a = '#22D3EE') => win(a, `
     ${[0, 1, 2, 3, 4, 5, 6].map((i) => `<rect x="70" y="${120 + i * 63}" width="470" height="52" rx="10" fill="${C.hover}"/><rect x="82" y="${132 + i * 63}" width="28" height="28" rx="14" fill="${i < 3 ? a : C.line}"/>${bar(128, 140 + i * 63, 150, 12, C.text)}${bar(420, 140 + i * 63, 40, 12, C.muted)}${bar(478, 140 + i * 63, 40, 12, i < 3 ? a : C.muted)}`).join('')}
     <path d="M640 160H700V210H760M640 260H700V210M640 360H700V410H760M640 460H700V410M760 210H820V310H870M760 410H820V310" fill="none" stroke="${C.line}" stroke-width="4"/>

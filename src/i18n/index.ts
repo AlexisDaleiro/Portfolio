@@ -9,6 +9,8 @@ export const getDict = (lang: Lang): Dict => dicts[lang];
 
 export const CONTACT = {
   email: 'alexisdaleiro@gmail.com',
+  // ID del form de Formspree (formspree.io/f/<ID>). Vacío = el modo email abre mailto:.
+  formspreeId: 'meaargqk',
   phoneDisplay: '+598 095 673 109',
   waNumber: '59895673109',
   linkedin: 'https://www.linkedin.com/in/alexisdaleiro/',

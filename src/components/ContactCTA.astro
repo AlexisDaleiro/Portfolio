@@ -26,7 +26,34 @@ const t = dict.contact;
         class="reveal min-w-0 space-y-5 rounded-2xl border border-subtle bg-surface p-6 sm:p-8 lg:col-span-7"
         data-wa={`https://wa.me/${CONTACT.waNumber}`}
         data-template={t.form.greeting}
+        data-endpoint={CONTACT.formspreeId ? `https://formspree.io/f/${CONTACT.formspreeId}` : ''}
+        data-mailto={CONTACT.email}
+        data-sending={t.form.sending}
+        data-sent={t.form.sent}
+        data-error={t.form.error}
       >
+        <div role="group" aria-label={t.form.channel} class="flex w-fit items-center rounded-xl border border-subtle bg-canvas p-0.5 font-mono text-xs font-medium">
+          <button
+            type="button"
+            data-mode="whatsapp"
+            data-submit={t.form.submit}
+            data-hint={t.form.hint}
+            aria-pressed="true"
+            class="inline-flex h-9 items-center gap-1.5 rounded-[0.6rem] px-3 text-muted transition-colors hover:text-primary aria-pressed:bg-accent-emerald aria-pressed:text-[#0A0C10]"
+          >
+            <Icon name="whatsapp" size={16} />WhatsApp
+          </button>
+          <button
+            type="button"
+            data-mode="email"
+            data-submit={t.form.submitEmail}
+            data-hint={t.form.hintEmail}
+            aria-pressed="false"
+            class="inline-flex h-9 items-center gap-1.5 rounded-[0.6rem] px-3 text-muted transition-colors hover:text-primary aria-pressed:bg-accent-emerald aria-pressed:text-[#0A0C10]"
+          >
+            <Icon name="mail" size={16} />Email
+          </button>
+        </div>
         <div>
           <label for="c-name" class="mb-2 block text-sm font-medium">{t.form.name}</label>
           <input
@@ -64,13 +91,16 @@ const t = dict.contact;
             placeholder={t.form.ideaPlaceholder}
             class="field resize-y"></textarea>
         </div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <button type="submit" class="btn btn-primary">
-            <Icon name="whatsapp" size={18} />
-            {t.form.submit}
+          <button type="submit" class="btn btn-primary" data-submit-btn>
+            <span data-icon="whatsapp"><Icon name="whatsapp" size={18} /></span>
+            <span data-icon="email" hidden><Icon name="mail" size={18} /></span>
+            <span data-submit-label>{t.form.submit}</span>
           </button>
-          <p class="text-sm text-muted">{t.form.hint}</p>
+          <p class="text-sm text-muted" data-hint>{t.form.hint}</p>
         </div>
+        <p role="status" class="text-sm font-medium" data-status></p>
       </form>
 
       <div class="reveal min-w-0 space-y-4 lg:col-span-5" style="--d:90ms">
@@ -132,15 +162,80 @@ const t = dict.contact;
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  form?.addEventListener('submit', (event) => {
+  const modeBtns = form?.querySelectorAll<HTMLButtonElement>('[data-mode]') ?? [];
+  const submitBtn = form?.querySelector<HTMLButtonElement>('[data-submit-btn]');
+  const submitLabel = form?.querySelector<HTMLElement>('[data-submit-label]');
+  const hint = form?.querySelector<HTMLElement>('p[data-hint]');
+  const status = form?.querySelector<HTMLElement>('[data-status]');
+  let mode: 'whatsapp' | 'email' = 'whatsapp';
+
+  const setMode = (next: 'whatsapp' | 'email') => {
+    mode = next;
+    modeBtns.forEach((btn) => {
+      const on = btn.dataset.mode === next;
+      btn.setAttribute('aria-pressed', String(on));
+      if (on) {
+        if (submitLabel) submitLabel.textContent = btn.dataset.submit ?? '';
+        if (hint) hint.textContent = btn.dataset.hint ?? '';
+      }
+    });
+    form?.querySelectorAll<HTMLElement>('[data-icon]').forEach((el) => {
+      el.hidden = el.dataset.icon !== next;
+    });
+    if (status) status.textContent = '';
+  };
+  modeBtns.forEach((btn) => btn.addEventListener('click', () => setMode(btn.dataset.mode as typeof mode)));
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const text = (form.dataset.template ?? '')
-      .replace('{name}', String(data.get('name')).trim())
-      .replace('{email}', String(data.get('email')).trim())
-      .replace('{idea}', String(data.get('idea')).trim());
-    window.open(`${form.dataset.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    const name = String(data.get('name')).trim();
+    const email = String(data.get('email')).trim();
+    const idea = String(data.get('idea')).trim();
+
+    if (mode === 'whatsapp') {
+      const text = (form.dataset.template ?? '')
+        .replace('{name}', name)
+        .replace('{email}', email)
+        .replace('{idea}', idea);
+      window.open(`${form.dataset.wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (!form.dataset.endpoint) {
+      // ponytail: sin Formspree configurado, el modo email cae a mailto:
+      const body = `${idea}\n\n— ${name} (${email})`;
+      window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent('Portfolio: ' + name)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
+    data.append('_subject', `Portfolio: ${name}`);
+    if (submitBtn) submitBtn.disabled = true;
+    if (status) {
+      status.className = 'text-sm font-medium text-muted';
+      status.textContent = form.dataset.sending ?? '';
+    }
+    try {
+      const res = await fetch(form.dataset.endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      if (status) {
+        status.className = 'text-sm font-medium text-accent-emerald';
+        status.textContent = form.dataset.sent ?? '';
+      }
+    } catch {
+      if (status) {
+        status.className = 'text-sm font-medium text-[#F87171]';
+        status.textContent = form.dataset.error ?? '';
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 
   const copyBtn = document.querySelector<HTMLButtonElement>('[data-copy]');

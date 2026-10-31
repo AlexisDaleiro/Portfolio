@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://alexisdaleiro.com',
+  site: 'https://alexisdaleiroportfolio.vercel.app',
   integrations: [
     react(),
     sitemap({

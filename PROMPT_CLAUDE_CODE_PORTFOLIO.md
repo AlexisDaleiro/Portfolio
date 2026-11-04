@@ -121,7 +121,7 @@ Cada tarjeta debe incluir imagen, etiquetas de stack, breve caso de estudio (Pro
 2. **Manlab (Clinical Diagnostics & Lab Platform)**
    - *Tags:* Full-Stack, Web App, UI/UX accesible.
    - *Descripción:* Interfaz moderna y accesible para visualización de servicios de laboratorio clínico, pensada para transmitir máxima rigurosidad y confianza a los pacientes.
-   - *Repo:* `https://github.com/AlexisDaleiro/Manlab`
+   - *Repo:* `https://github.com/AlexisDaleiro/Manlab-in-redise-o`
 3. **automationfindr (AI & Automation Tools Discovery)**
    - *Tags:* JavaScript / APIs, Directorio Dinámico, Filtros avanzados.
    - *Descripción:* Buscador inteligente y directorio de soluciones de automatización e Inteligencia Artificial, con sistema de categorización y filtrado en tiempo real.

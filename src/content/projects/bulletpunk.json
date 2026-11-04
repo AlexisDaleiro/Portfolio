@@ -1,0 +1,23 @@
+{
+  "order": 4,
+  "category": "app",
+  "tags": {
+    "es": ["TypeScript", "PixiJS", "Vite", "Juego 2D"],
+    "en": ["TypeScript", "PixiJS", "Vite", "2D game"]
+  },
+  "repo": "https://github.com/AlexisDaleiro/BulletPunk",
+  "demo": "https://bulletpunk.vercel.app",
+  "image": "/images/projects/bulletpunk.webp",
+  "es": {
+    "title": "BulletPunk",
+    "subtitle": "Protocol Zero · Juego de acción y sigilo 2D",
+    "problem": "Crear un juego de infiltración en el navegador donde el combate, el sonido y la exploración permitan distintas formas de superar cada incursión.",
+    "solution": "Juego 2D con TypeScript y PixiJS: escenarios procedurales, seis operativos con habilidades propias, enemigos que reaccionan al sonido, mejoras por experiencia y personalización guardada en el navegador."
+  },
+  "en": {
+    "title": "BulletPunk",
+    "subtitle": "Protocol Zero · 2D action and stealth game",
+    "problem": "Build a browser infiltration game where combat, sound and exploration offer different ways to complete each run.",
+    "solution": "A 2D game built with TypeScript and PixiJS: procedural levels, six operatives with unique abilities, sound-reactive enemies, experience-based upgrades and customization saved in the browser."
+  }
+}

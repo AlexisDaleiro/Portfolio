@@ -1,0 +1,31 @@
+{
+  "order": 5,
+  "category": "web",
+  "tags": {
+    "es": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "en": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
+  },
+  "repo": "https://github.com/AlexisDaleiro/Juncal-automoviles",
+  "demo": "https://juncal-automoviles.vercel.app/vehiculos",
+  "image": "/images/projects/juncal-automoviles.webp",
+  "es": {
+    "title": "Juncal Automóviles",
+    "subtitle": "Prototipo de catálogo para una automotora",
+    "problem": "Quien busca un auto necesita filtrar el catálogo, consultar los detalles y estimar una cuota antes de contactar a la automotora.",
+    "solution": "Catálogo adaptable con búsqueda y filtros que se pueden compartir por enlace, vehículos guardados, simulador de financiación y consultas por WhatsApp. La demo usa datos de ejemplo."
+  },
+  "en": {
+    "title": "Juncal Automóviles",
+    "subtitle": "Vehicle catalog prototype for a dealership",
+    "problem": "Car shoppers need to narrow down listings, review vehicle details, and estimate monthly payments before contacting the dealership.",
+    "solution": "A responsive catalog with search and shareable filters, saved vehicles, a financing calculator, and WhatsApp inquiries. The demo uses sample data."
+  }
+}

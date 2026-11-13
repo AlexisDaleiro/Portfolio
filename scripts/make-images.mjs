@@ -59,11 +59,6 @@ const mocks = {
     ${[0, 1, 2, 3, 4].map((i) => `<rect x="${160 + i * 92}" y="196" width="80" height="30" rx="15" fill="${i === 0 ? a : C.hover}"/>`).join('')}
     ${[0, 1, 2, 3, 4, 5].map((i) => card(70 + (i % 3) * 300, 255 + Math.floor(i / 3) * 165, 280, 145, i % 2 ? null : a)).join('')}
     ${[0, 1, 2, 3, 4, 5].map((i) => bar(90 + (i % 3) * 300, 275 + Math.floor(i / 3) * 165, 120, 14, C.text) + bar(90 + (i % 3) * 300, 305 + Math.floor(i / 3) * 165, 200, 10, C.muted)).join('')}`),
-  garrafifa: (a = '#22D3EE') => win(a, `
-    ${[0, 1, 2, 3, 4, 5, 6].map((i) => `<rect x="70" y="${120 + i * 63}" width="470" height="52" rx="10" fill="${C.hover}"/><rect x="82" y="${132 + i * 63}" width="28" height="28" rx="14" fill="${i < 3 ? a : C.line}"/>${bar(128, 140 + i * 63, 150, 12, C.text)}${bar(420, 140 + i * 63, 40, 12, C.muted)}${bar(478, 140 + i * 63, 40, 12, i < 3 ? a : C.muted)}`).join('')}
-    <path d="M640 160H700V210H760M640 260H700V210M640 360H700V410H760M640 460H700V410M760 210H820V310H870M760 410H820V310" fill="none" stroke="${C.line}" stroke-width="4"/>
-    ${[160, 260, 360, 460].map((y) => `<rect x="580" y="${y - 20}" width="60" height="40" rx="8" fill="${C.hover}"/>`).join('')}
-    <rect x="870" y="285" width="64" height="50" rx="10" fill="${a}"/>`),
 };
 // Fallback: solo si falta la captura real (public/images/projects/<slug>.webp).
 for (const [slug, make] of Object.entries(mocks)) {
